@@ -21,7 +21,7 @@ pipeline {
                         bat 'echo "Running on Windows"'
                         bat 'python --version' // Vérifier la version python
                         bat 'pip.pyz --version' // Vérifier la version pip
-                        bat 'pip install pandas' // Installer les dÃ©pendances
+                        bat 'pip.pyz install pandas' // Installer les dÃ©pendances
                         bat 'python data_analysis.py' // ExÃ©cuter le script Python
                         // Add your Windows-specific build commands here
                     }
