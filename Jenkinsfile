@@ -19,7 +19,7 @@ pipeline {
                         // Add your Unix-specific build commands here
                     } else {
                         bat 'echo "Running on Windows"'
-                        bat 'pip install pandas' // Installer les dÃ©pendances
+                       // bat 'pip install pandas' // Installer les dÃ©pendances
                         bat 'python data_analysis.py' // ExÃ©cuter le script Python
                         // Add your Windows-specific build commands here
                     }
