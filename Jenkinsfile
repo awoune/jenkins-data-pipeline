@@ -5,8 +5,9 @@ pipeline {
             steps {
                 script {
                     // Choisissez la commande en fonction de votre script
-                    sh 'pip install pandas' // Installer les dépendances
-                    sh 'python data_analysis.py' // Exécuter le script Python
+                    bat 'echo "Running on Windows"'
+                    bat 'pip install pandas' // Installer les dépendances
+                    bat 'python data_analysis.py' // Exécuter le script Python
                 }
             }
         }
