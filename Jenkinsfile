@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        PIP_HOME = 'C:\\Users\\cdied\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\Scripts'
+        PIP_HOME = 'C:\\Users\\cdied\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312'
         PYTHON_HOME = 'C:\\env\\python-3.12.4-embed-amd64'
-        PATH = "${env.PATH};${PIP_HOME};${PYTHON_HOME}"
+        PATH = "${env.PATH};${PIP_HOME}\\Scripts;${PYTHON_HOME}"
     }
     stages {
         stage('Checkout') {
