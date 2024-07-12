@@ -3,7 +3,7 @@ pipeline {
     environment {
         PIP_HOME = 'C:\\env'
         PYTHON_HOME = 'C:\\env\\python-3.12.4-embed-amd64'
-        PATH = "${env.PATH};${PIP_HOME};${PYTHON_HOME}"
+        PATH = "${env.PATH};${PIP_HOME};${PYTHON_HOME};${PYTHON_HOME}\\Scripts;${PYTHON_HOME}\\Lib\\site-packages"
     }
     stages {
         stage('Checkout') {
