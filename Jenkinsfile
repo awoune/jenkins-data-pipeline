@@ -1,19 +1,28 @@
 pipeline {
     agent any
+    environment {
+        PIP_HOME = 'C:\\Users\\cdied\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\Scripts'
+        PYTHON_HOME = 'C:\\env\\python-3.12.4-embed-amd64'
+        PATH = "${env.PATH};${PIP_HOME};${PYTHON_HOME}"
+    }
     stages {
+        stage('Checkout') {
+            steps {
+               git branch: 'main', url: 'https://github.com/awoune/jenkins-data-pipeline.git'
+            }
+        }
         stage('Build') {
             steps {
                 script {
-                        withEnv([
-                            "PYTHON_HOME=C:\\env\\python-3.12.4-embed-amd64",
-                            "PIP_HOME=C:\\Users\\cdied\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\Scripts",
-                            "PATH=${env.PATH};${PYTHON_HOME};${PIP_HOME}"
-                        ]) {
-                            // Choisissez la commande en fonction de votre script
-                            bat 'echo "Running on Windows"'
-                            bat 'pip install pandas' // Installer les dÃ©pendances
-                            bat 'python data_analysis.py' // ExÃ©cuter le script Python
-                        }
+                    if (isUnix()) {
+                        sh 'echo "Running on Unix"'
+                        // Add your Unix-specific build commands here
+                    } else {
+                        bat 'echo "Running on Windows"'
+                        bat 'pip install pandas' // Installer les dÃ©pendances
+                        bat 'python data_analysis.py' // ExÃ©cuter le script Python
+                        // Add your Windows-specific build commands here
+                    }
                 }
             }
         }
